@@ -1,0 +1,66 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int[] answers) {
+        
+        int [] a = {1,2,3,4,5};
+        int [] b = {2,1,2,3,2,4,2,5};
+        int [] c = {3,3,1,1,2,2,4,4,5,5,};
+        
+        int i1=0,i2=0,i3=0;
+        
+        int [] count = new int [3]; //맞은 개수
+        int [] correct = new int [3]; // 많이 맞힌 사람
+        
+            for(int j=0; j<answers.length;j++){
+                
+                if(j % 5 == 0)  
+                    i1 = 0;
+                
+                if(j % 8 == 0)
+                    i2 = 0;
+                
+                if(j % 10 == 0)
+                    i3 = 0;
+                
+                  if(answers[j] == a[i1++]){
+                        count[0]++;
+                   }
+                  
+                   if(answers[j] == b[i2++]){
+                         count[1]++;
+                 }
+                if(answers[j] == c[i3++]){
+                         count[2]++;
+                }
+                
+         }
+        int max=0;
+        int maxcnt=0;
+        int num=0;
+        for(int i=0; i<count.length;i++){
+            if(max < count[i]){
+                max = count[i];
+                maxcnt=1;
+                correct[num] = i+1;
+            }
+             if(max == count[i]){
+                 num++;
+                 maxcnt ++;
+                 correct[num] = i+1;
+             }
+            
+        }
+        
+        Arrays.sort(correct);
+        
+        int []corr = new int [maxcnt];
+        for(int z = 0; z < corr.length; z++){
+                 corr[z] = correct[z];
+         }        
+        
+        
+        return corr;
+        
+        }
+        
+    }
