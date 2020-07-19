@@ -1,0 +1,45 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int [ commands.length ];
+        int count_answer=-1;
+        
+        for(int i=0;i<commands.length;i++){
+                int [] a = new int[3]; // commands 한 행씩 추출
+                int [] b; // array 배열 추출
+            for(int j=0;j<3;j++){
+                a[j] = commands[i][j];
+            }
+            int index=-1;
+            b = new int[ a[1] - a[0] + 1];
+            for(int z = a[0]; z <= a[1]; z++){
+                b[++index] = array[z-1];
+            }
+            Arrays.sort(b);
+            answer[++count_answer] = b[ a[2]-1 ];
+        }    
+        
+        return answer;
+        
+        
+    }
+}
+
+
+
+다른 사람 정답=============================================
+import java.util.Arrays;
+class Solution {
+    public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
+
+        for(int i=0; i<commands.length; i++){
+            int[] temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+            Arrays.sort(temp);
+            answer[i] = temp[commands[i][2]-1];
+        }
+
+        return answer;
+    }
+}
