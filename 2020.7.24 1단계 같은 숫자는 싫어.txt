@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class Solution {
+    public int[] solution(int []arr) {
+        int[] a = new int[arr.length];
+        int [] answer;
+        int tmp;
+        int count=0;
+        
+        a[count++] = arr[0];
+        for(int i = 0; i<a.length-1; i++){
+            tmp = arr[i];
+            if(tmp != arr[i+1]){
+                a[count++] = arr[i+1];
+            }
+        }
+        
+        answer = new int[count];
+        for(int j=0; j <count ;j++){
+            answer[j] = a[j];
+        }
+        return answer;
+    }
+}
+
+======================
+import java.util.*;
+
+public class Solution {
+    public int[] solution(int []arr) {
+        ArrayList<Integer> tempList = new ArrayList<Integer>();
+        int preNum = 10;
+        for(int num : arr) {
+            if(preNum != num)
+                tempList.add(num);
+            preNum = num;
+        }       
+        int[] answer = new int[tempList.size()];
+        for(int i=0; i<answer.length; i++) {
+            answer[i] = tempList.get(i).intValue();
+        }
+        return answer;
+    }
+}
